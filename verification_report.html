@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검증 리포트: 서울시 문화 사각지대 진단</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fdfcf8;
+            --text-color: #1a1a1a;
+            --accent-color: #a01d21;
+            --border-color: #d1d1d1;
+            --card-bg: #ffffff;
+            --secondary-text: #555555;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px;
+            background: var(--card-bg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--accent-color);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            border-bottom: 1px double var(--border-color);
+            padding-bottom: 40px;
+        }
+
+        h1 {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            color: var(--text-color);
+        }
+
+        .meta {
+            font-size: 0.9rem;
+            color: var(--secondary-text);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #content {
+            margin-top: 40px;
+        }
+
+        h2 {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.8rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            color: var(--text-color);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 35px;
+            color: var(--accent-color);
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #f8f8f8;
+            border-bottom: 2px solid var(--text-color);
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px;
+        }
+
+        strong {
+            color: var(--accent-color);
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid var(--border-color);
+            margin: 40px 0;
+        }
+
+        blockquote {
+            border-left: 4px solid var(--border-color);
+            padding-left: 20px;
+            color: var(--secondary-text);
+            font-style: italic;
+            margin: 30px 0;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .status-good { background: #e6ffed; color: #22863a; }
+        .status-caution { background: #fffdef; color: #735c0f; }
+        .status-match { background: #f1f8ff; color: #005cc5; }
+
+        footer {
+            margin-top: 80px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--secondary-text);
+            padding: 40px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .container { margin: 20px; padding: 20px; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="meta">데이터 검증 에이전트 리포트</div>
+            <h1>서울시 문화 사각지대 진단 보고서 데이터 검증</h1>
+            <div class="meta">검증일: 2026년 5월 23일 | 검증자: Antigravity Agent</div>
+        </header>
+
+        <div id="content"></div>
+
+        <footer>
+            &copy; 2026 Antigravity Data Analytics Lab. All rights reserved.
+        </footer>
+    </div>
+
+    <script>
+        const markdown = `# [검증 리포트] 서울시 문화 사각지대 진단 보고서 데이터 검증 결과
+
+**검증일**: 2026년 5월 23일  
+**검증자**: Gemini CLI (Data Verification Agent)
+
+---
+
+## 1. 검증 개요
+본 리포트는 \`@seoul_culture_event/eda_report.md\`에 기술된 분석 내용과 결론이 실제 제공된 데이터와 일치하는지 확인하기 위해 작성되었습니다. 총 11가지의 검증 방법을 적용하여 데이터의 무결성, 지표 산출의 타당성, 그리고 인사이트의 정확성을 평가했습니다.
+
+---
+
+## 2. 검증 방법 및 결과 요약
+
+| 번호 | 검증 항목 | 검증 방법 | 결과 | 비고 |
+| :--- | :--- | :--- | :---: | :--- |
+| 1 | **데이터 행 수** | 문화행사 정보 CSV 행 수 확인 | **양호** | 보고서(3,924건) vs 실제(3,945건) |
+| 2 | **행사 편중성** | 자치구별 행사 수 분포 계산 | **일치** | 종로구(1,012건) 등 도심 집중 현상 뚜렷 |
+| 3 | **공급 점수** | 인구 대비 행사 수(공급 밀도) 산출 | **일치** | 도봉, 중랑, 양천구 모두 공급 하위권 확인 |
+| 4 | **경제 점수** | 무료 행사 비중(경제적 장벽) 산출 | **주의** | 도봉구는 실제 무료 비중이 높으나 보고서엔 장벽 높게 기술됨 |
+| 5 | **접근성 점수** | 인구 대비 지하철 역 수 산출 | **일치** | 도봉구(역 3개) 등 외곽 지역 접근성 취약 확인 |
+| 6 | **20대 소비 - 영화** | 설문 데이터 기반 영화 관람 빈도 확인 | **일치** | 2.01회로 전 장르 중 압도적 1위 |
+| 7 | **20대 소비 - 공연** | 설문 데이터 기반 대중공연 비용 확인 | **일치** | 152,251원으로 지출 규모 압도적 1위 |
+| 8 | **최종 소외지수 순위** | 산출 로직 기반 TOP 3 자치구 재산정 | **양호** | 중랑구 등 보고서 언급 지역이 실제 상위권 포진 |
+| 9 | **공간 데이터 정확성** | 위경도 좌표 범위 및 서울시 경계 확인 | **양호** | 3,943건의 유효 좌표가 서울 범위 내 존재 |
+| 10 | **액션 플랜 지리성** | 제안된 거점의 자치구 일치 여부 확인 | **일치** | 창동(도봉), 면목(중랑), 안양천(양천) 위치 적절 |
+| 11 | **데이터 소스 완결성** | 보고서 언급 4종 데이터 존재 여부 확인 | **양호** | 행사, 교통, 인구(근사치), 설문 데이터 모두 확보 |
+
+---
+
+## 3. 세부 검증 결과
+
+### 📊 3.1. 자치구별 공급 및 접근성 현황
+- **행사 수 최하위**: 강서구(38), 강동구(44), 동작구(45), 도봉구(52), 중랑구(56) 순으로 보고서의 '공급 부족' 가설을 뒷받침합니다.
+- **지하철 접근성**: 도봉구는 인구 31만 명 대비 역 수가 3개로, 인구 대비 접근성 지수가 매우 높게(취약하게) 나타났습니다.
+
+### 💰 3.2. 경제적 장벽(무료 비중) 분석의 특이사항
+- **보고서 내용**: 중랑구와 도봉구의 경제적 장벽이 매우 높다고 기술됨.
+- **데이터 분석**: 
+    - 중랑구: 무료 비중 51.8% (서울 평균보다 낮아 장벽 존재)
+    - 도봉구: 무료 비중 **94.2%** (실제로는 무료 행사가 대부분임)
+- **판단**: 도봉구의 경우 '행사 수 자체가 적은 것'이 문제이지, '경제적 장벽(가격)'이 높은 것은 아닌 것으로 판단됩니다. 보고서 작성 시 지표 해석에 혼선이 있었을 가능성이 있습니다.
+
+### 🏃 3.3. 20대 문화 소비 패턴 (데이터 기반)
+- **영화**: 연간 2.01회 관람, 평균 비용 52,603원 (가성비 중심의 일상적 소비)
+- **대중공연**: 연간 0.14회 관람, 평균 비용 **152,251원** (고비용 목적형 소비)
+- **검증 결과**: "영화는 빈번하나 지출은 적고, 대중공연은 드물지만 지출이 크다"는 보고서의 인사이트는 데이터와 정확히 일치합니다.
+
+---
+
+## 4. 종합 의견
+보고서 \`@seoul_culture_event/eda_report.md\`는 전반적으로 신뢰할 수 있는 데이터를 기반으로 작성되었으며, 특히 **20대의 소비 특성과 지역별 물리적 접근성(지하철) 결합 분석**은 매우 탁월합니다.
+
+다만, **도봉구의 경제 점수** 부분에서 실제 데이터(무료 위주)와 보고서 내용(장벽 높음) 간의 괴리가 발견되었으므로, 향후 전략 수립 시 도봉구는 '공급 확대'에, 중랑구는 '무료 콘텐츠 보급'에 더 집중하는 방향으로 미세 조정할 것을 권고합니다.`;
+
+        document.getElementById('content').innerHTML = marked.parse(markdown);
+        
+        // 커스텀 배지 처리 (간단한 치환)
+        const content = document.getElementById('content').innerHTML;
+        const updatedContent = content
+            .replace(/\*\*양호\*\*/g, '<span class="status-badge status-good">양호</span>')
+            .replace(/\*\*일치\*\*/g, '<span class="status-badge status-match">일치</span>')
+            .replace(/\*\*주의\*\*/g, '<span class="status-badge status-caution">주의</span>');
+        document.getElementById('content').innerHTML = updatedContent;
+    </script>
+</body>
+</html>
